@@ -27,6 +27,11 @@ open class KotlinJsTargetConfigurator(kotlinPluginVersion: String) :
     }
 
     override fun configureTest(target: KotlinOnlyTarget<KotlinJsCompilation>) {
+        target as KotlinJsTarget
+
+        // create test task anyway for compatibility (KT-31527)
+        target.testTask
+
         // tests configured in KotlinJsSubTarget.configure
     }
 
